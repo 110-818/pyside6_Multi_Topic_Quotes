@@ -1,11 +1,11 @@
 import sys
 from main_window import Ui_Dialog
-from PySide6.QtWidgets import QApplication,QMainWindow,QMessageBox
+from PySide6.QtWidgets import QApplication,QMainWindow,QMessageBox,QDialog
 from functools import partial
 from database import SQl
 import random as rand
 
-class Main(QMainWindow):
+class Main(QDialog):
     def __init__(self):
         super().__init__()
         self.ui = Ui_Dialog()
@@ -40,8 +40,10 @@ class Main(QMainWindow):
         for i in range(len(item)):
             if i == 0:
                 continue
+            elif i == None:
+                continue
             else:
-                text = text + "\n" + item[i]
+                text = f"{text} \n {item[i]}"
         self.ui.label.setText(text)
 
 app = QApplication(sys.argv)
